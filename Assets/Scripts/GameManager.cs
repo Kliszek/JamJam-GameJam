@@ -21,12 +21,16 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+        if (playerInstance == null)
+            playerInstance = FindObjectOfType<Player>();
 
     }
     void Start()
     {
+        //if (playerInstance == null)
+        //    playerInstance = FindObjectOfType<Player>();
         if (playerInstance == null)
-            playerInstance = FindObjectOfType<Player>();
+            Debug.LogError("Coult not find the Player!");
 
         playerScore = 0;
         ultimateProgress = 0.0f;
