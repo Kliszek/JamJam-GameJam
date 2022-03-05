@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &48861874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 151310604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42627218a3538431995b8f649e0f9e90, type: 3}
+  m_Script: {fileID: 11500000, guid: 495c17fa6b2fab64da7fae344c1c1c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   progress: {fileID: 151310607}
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18bd5d5683cfe444095ddd8035dce2de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aac7a9d53e7179443b82c5c9490d2e4d, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -916,7 +916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38834e244cd2d4e4a829809bc94f6755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progress: {fileID: 2050005275}
 --- !u!1 &1226675562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1416,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3532cb91f58b343e1b143cc77756a6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 046d99791b923554e930568c3666d044, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1988,7 +1987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38834e244cd2d4e4a829809bc94f6755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progress: {fileID: 2050005275}
 --- !u!114 &2050005275
 MonoBehaviour:
   m_ObjectHideFlags: 0
