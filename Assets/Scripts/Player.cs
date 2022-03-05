@@ -29,6 +29,19 @@ public class Player : MonoBehaviour
         {
             Shoot();
         }
+
+        if(Input.GetKeyDown(KeyCode.Q) && GameManager.instance.CanUseUltimate)
+        {
+            Ultimate();
+        }
+    }
+
+    public void Ultimate()
+    {
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemy.GetComponent<Ghost>().Die();
+        }
     }
 
     public void RefillReload(float value)

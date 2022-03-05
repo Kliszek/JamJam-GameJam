@@ -27,6 +27,7 @@ public class Ghost : MonoBehaviour
     public void Die()
     {
         GameManager.playerInstance.RefillReload(5.0f);
+        GameManager.instance.ultimateProgress += 10.0f;
         Destroy(gameObject);
     }
 
