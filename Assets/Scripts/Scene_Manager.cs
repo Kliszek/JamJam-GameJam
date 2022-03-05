@@ -21,5 +21,16 @@ public class Scene_Manager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
+    public void LoadStartingScene()
+    {
+
+    SceneManager.LoadScene(0);
+    }
+    public void LoadCredits()
+    {
+
+    SceneManager.LoadScene("Credits");
+    }
+
 
 }
