@@ -394,3 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb3e0c1d2845574780995d52bd32ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reloadCooldown: 0
+  reloadTime: 10
+  bulletPrefab: {fileID: 4367452152385410835, guid: ad79fc5f32a737e4bb61bb4b05780d51, type: 3}

@@ -24,6 +24,12 @@ public class Ghost : MonoBehaviour
         agent.destination = playerInstance.position;
     }
 
+    public void Die()
+    {
+        GameManager.playerInstance.RefillReload(5.0f);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
