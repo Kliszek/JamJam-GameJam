@@ -18,6 +18,6 @@ public class Bulb_Fill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        progress.fillAmount -= Time.deltaTime;
+        progress.fillAmount = GameManager.instance.ultimateProgress / 100.0f; ;
     }
 }

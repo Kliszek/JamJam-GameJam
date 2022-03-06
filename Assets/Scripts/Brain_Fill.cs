@@ -19,7 +19,7 @@ public class Brain_Fill : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-        //progress.fillAmount = GM.GetComponent<GameManager>().Re;
+        progress.fillAmount = GameManager.playerInstance.health/100.0f;//GM.GetComponent<GameManager>().Re;
         // Gdzie jest Bongo?!
         }
    }

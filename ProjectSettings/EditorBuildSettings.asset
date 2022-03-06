@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: cbcaf6854947541cbb44a65e53a8f403
   - enabled: 1
-    path: Assets/Scenes/JuJaj.unity
-    guid: 4800d25b70f25453b9e6ab8a5d67d354
+    path: Assets/Scenes/Room.unity
+    guid: d2430456e310b744fb24e9e049107d4a
   - enabled: 1
     path: Assets/Scenes/GameOverSplash.unity
     guid: 5c5e8b3732faba148b105e04dfec62f8

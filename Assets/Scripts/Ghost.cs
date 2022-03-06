@@ -37,6 +37,17 @@ public class Ghost : MonoBehaviour
         {
             Debug.Log("Player got hit!");
             //GameManager.playerInstance.TakeDamage(damage);
+
+            GameManager.playerInstance.TakeDamage(damage);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Player got hit!");
+            GameManager.playerInstance.TakeDamage(damage);
         }
     }
 }

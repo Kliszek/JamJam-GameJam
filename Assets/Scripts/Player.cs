@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float reloadCooldown;
     public float reloadTime = 10.0f;
     public GameObject bulletPrefab;
+    public float health = 100.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
 
     public void Ultimate()
     {
+        GameManager.instance.UseUltimate();
         foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemy.GetComponent<Ghost>().Die();
@@ -53,5 +55,13 @@ public class Player : MonoBehaviour
     {
         reloadCooldown = reloadTime;
         Instantiate(bulletPrefab, transform.position, transform.rotation);
+    }
+
+    public void TakeDamage(float value)
+    {
+        health -= value;
+        if (health <= 0.0f)
+            GameManager.instance.OnDie();
+        Debug.Log("AU");
     }
 }

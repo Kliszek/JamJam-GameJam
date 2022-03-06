@@ -36,16 +36,22 @@ public class UiManager : MonoBehaviour
     {
         GM.GetComponent<GameManager>().playerSpeedLevel++;
         GM.GetComponent<GameManager>().ultimateUsed = false;
+        Time.timeScale = 1.0f;
+        Cursor.visible = false;
     }
     public void LevelUpHealth()
     {
         GM.GetComponent<GameManager>().playerHealthLevel++;
         GM.GetComponent<GameManager>().ultimateUsed = false;
+        Time.timeScale = 1.0f;
+        Cursor.visible = false;
     }
     public void LevelUpReload()
     {
         GM.GetComponent<GameManager>().playerReloadLevel++;
         GM.GetComponent<GameManager>().ultimateUsed = false;
+        Time.timeScale = 1.0f;
+        Cursor.visible = false;
     }
 
 }

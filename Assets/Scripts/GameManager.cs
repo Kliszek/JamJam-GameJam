@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
     public int playerHealthLevel = 1;
     public int playerReloadLevel = 1;
 
+    public GameObject ghostPrefab;
+    public Transform spawnPoint;
+    float enemyCooldown;
+
     private void Awake()
     {
         if (instance == null)
@@ -27,14 +32,25 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        //if (playerInstance == null)
-        //    playerInstance = FindObjectOfType<Player>();
+        enemyCooldown = 5.0f;
+        if (playerInstance == null)
+            playerInstance = FindObjectOfType<Player>();
         if (playerInstance == null)
             Debug.LogError("Coult not find the Player!");
 
         playerScore = 0;
         ultimateProgress = 0.0f;
         ultimateUsed = false;
+    }
+
+    private void Update()
+    {
+        enemyCooldown -= Time.deltaTime;
+        if (enemyCooldown <= 0.0f)
+        {
+            Instantiate(ghostPrefab, spawnPoint);
+            enemyCooldown = 3.0f;
+        }
     }
 
     void AddPoints(int points)
@@ -51,11 +67,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void UseUltimate()
+    public void UseUltimate()
     {
         ultimateUsed = true;
+        Time.timeScale = 0.0f;
+        Cursor.visible = true;
+
         //some code
     }
 
-
+    public void OnDie()
+    {
+        Time.timeScale = 0.0f;
+        SceneManager.LoadScene(2);
+    }
 }
