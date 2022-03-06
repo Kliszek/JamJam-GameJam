@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static Player playerInstance;
     public int playerScore;
-    public float ultimateProgress;
+    public float ultimateProgress = 0.0f;
     public float ultimateBoundary = 100.0f;
+    public float NormalizedUltimate => ultimateProgress / ultimateBoundary;
     public bool CanUseUltimate => ultimateProgress >= ultimateBoundary;
     public bool ultimateUsed = false;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Brain_Fill : MonoBehaviour
+public class Battery_Fill : MonoBehaviour
 {
     Image progress;
 
@@ -18,8 +18,6 @@ public class Brain_Fill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        progress.fillAmount = GameManager.playerInstance.NormalizedHealth;
-        // Gdzie jest Bongo?!
+        progress.fillAmount = GameManager.playerInstance.NormalizedReload;
     }
-   }
-
+}

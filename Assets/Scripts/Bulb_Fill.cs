@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Bulb_Fill : MonoBehaviour
 {
-    public Image progress;
-    private float ult = 100;
+    Image progress;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        progress = GetComponent<Image>();
     }
 
 
@@ -18,6 +18,6 @@ public class Bulb_Fill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        progress.fillAmount = GameManager.instance.ultimateProgress / 100.0f; ;
+        progress.fillAmount = GameManager.instance.NormalizedUltimate;
     }
 }

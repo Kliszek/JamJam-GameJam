@@ -7,8 +7,12 @@ public class Player : MonoBehaviour
     
     public float reloadCooldown;
     public float reloadTime = 10.0f;
+    public float NormalizedReload => (reloadTime - reloadCooldown) / reloadTime;
+
     public GameObject bulletPrefab;
     public float health = 100.0f;
+    public float maxHealth = 100.0f;
+    public float NormalizedHealth => health / maxHealth;
 
     // Start is called before the first frame update
     void Start()
