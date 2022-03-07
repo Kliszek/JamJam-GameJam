@@ -71,8 +71,6 @@ public class GameManager : MonoBehaviour
     public void UseUltimate()
     {
         ultimateUsed = true;
-        Time.timeScale = 0.0f;
-        Cursor.visible = true;
 
         //some code
     }

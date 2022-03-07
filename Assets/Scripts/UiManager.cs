@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class UiManager : MonoBehaviour
 {
+    [SerializeField] public GameObject fpsController;
     [SerializeField] private GameObject Screen;
     bool IsNukeActive = true;
     [SerializeField] private GameObject GM;
@@ -25,6 +27,11 @@ public class UiManager : MonoBehaviour
         if (IsNukeActive == true)
         {
             Screen.SetActive(true);
+            fpsController.GetComponent<FirstPersonController>().enabled = false;
+            Cursor.visible = true ;        
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+
 
         }
         else
@@ -36,22 +43,27 @@ public class UiManager : MonoBehaviour
     {
         GM.GetComponent<GameManager>().playerSpeedLevel++;
         GM.GetComponent<GameManager>().ultimateUsed = false;
-        Time.timeScale = 1.0f;
-        Cursor.visible = false;
+        UndoChanges();
     }
     public void LevelUpHealth()
     {
         GM.GetComponent<GameManager>().playerHealthLevel++;
         GM.GetComponent<GameManager>().ultimateUsed = false;
-        Time.timeScale = 1.0f;
-        Cursor.visible = false;
+        UndoChanges();
     }
     public void LevelUpReload()
     {
         GM.GetComponent<GameManager>().playerReloadLevel++;
         GM.GetComponent<GameManager>().ultimateUsed = false;
+        UndoChanges();
+    }
+
+    private void UndoChanges()
+    {
+        fpsController.GetComponent<FirstPersonController>().enabled = true;
+        Cursor.visible = true ;        
+        Cursor.lockState = CursorLockMode.Confined ;
         Time.timeScale = 1.0f;
-        Cursor.visible = false;
     }
 
 }

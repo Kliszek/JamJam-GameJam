@@ -57,8 +57,11 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        reloadCooldown = reloadTime;
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        if (GameManager.instance.ultimateUsed == false)
+        {
+            reloadCooldown = reloadTime;
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
+        }
     }
 
     public void TakeDamage(float value)
