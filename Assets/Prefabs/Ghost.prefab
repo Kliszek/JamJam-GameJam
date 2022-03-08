@@ -7748,7 +7748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  LampIcon: {fileID: 0}
 --- !u!136 &4951922751590868134
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7775,7 +7774,6 @@ GameObject:
   - component: {fileID: 4552531464889956197}
   - component: {fileID: 4552531464889956198}
   - component: {fileID: 4552531464889956199}
-  - component: {fileID: 4552531464889956200}
   m_Layer: 0
   m_Name: EyeL
   m_TagString: Untagged
@@ -10002,20 +10000,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4552531464889956202}
   m_Mesh: {fileID: 0}
---- !u!64 &4552531464889956200
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4552531464889956202}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &4552531466031091109
 GameObject:
   m_ObjectHideFlags: 0
@@ -10028,7 +10012,6 @@ GameObject:
   - component: {fileID: 4552531466031091104}
   - component: {fileID: 4552531466031091105}
   - component: {fileID: 4552531466031091106}
-  - component: {fileID: 4552531466031091107}
   m_Layer: 0
   m_Name: EyeR
   m_TagString: Untagged
@@ -12254,18 +12237,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4552531466031091109}
-  m_Mesh: {fileID: 0}
---- !u!64 &4552531466031091107
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4552531466031091109}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
