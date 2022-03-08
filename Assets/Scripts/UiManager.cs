@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class UiManager : MonoBehaviour
@@ -9,10 +10,12 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject Screen;
     bool IsNukeActive = true;
     [SerializeField] private GameObject GM;
+
+    private GameObject UltimateProgressUI;
     // Start is called before the first frame update
     void Start()
     {
-        
+        UltimateProgressUI = GameObject.Find("LightBulb");
     }
 
     // Update is called once per frame
@@ -42,20 +45,20 @@ public class UiManager : MonoBehaviour
     public void LevelUpSpeed()
     {
         GM.GetComponent<GameManager>().playerSpeedLevel++;
-        GM.GetComponent<GameManager>().ultimateUsed = false;
         UndoChanges();
+        UltimateProgressClear();
     }
     public void LevelUpHealth()
     {
         GM.GetComponent<GameManager>().playerHealthLevel++;
-        GM.GetComponent<GameManager>().ultimateUsed = false;
         UndoChanges();
+        UltimateProgressClear();
     }
     public void LevelUpReload()
     {
         GM.GetComponent<GameManager>().playerReloadLevel++;
-        GM.GetComponent<GameManager>().ultimateUsed = false;
         UndoChanges();
+        UltimateProgressClear();
     }
 
     private void UndoChanges()
@@ -66,4 +69,11 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    private void UltimateProgressClear()
+    {
+        GM.GetComponent<GameManager>().ultimateUsed = false;
+        GM.GetComponent<GameManager>().ultimateProgress = 0;
+        UltimateProgressUI.GetComponent<Image>().fillAmount = 0;//is it necessary?
+
+    }
 }
