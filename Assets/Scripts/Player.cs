@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour
     public float health = 100.0f;
     public float maxHealth = 100.0f;
     public float NormalizedHealth => health / maxHealth;
+    [SerializeField] private GameObject BrainIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +70,8 @@ public class Player : MonoBehaviour
     public void TakeDamage(float value)
     {
         health -= value;
+        var Icon = BrainIcon.GetComponent<Image>();
+        Icon.fillAmount = health/100;
         if (health <= 0.0f)
             GameManager.instance.OnDie();
         Debug.Log("AU");

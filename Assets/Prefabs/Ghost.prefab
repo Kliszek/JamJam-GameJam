@@ -7748,6 +7748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  LampIcon: {fileID: 0}
 --- !u!136 &4951922751590868134
 CapsuleCollider:
   m_ObjectHideFlags: 0
