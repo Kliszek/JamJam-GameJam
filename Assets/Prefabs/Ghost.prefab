@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1299212451859314236}
   - component: {fileID: 1299212451859314226}
   - component: {fileID: 4951922751590868134}
+  - component: {fileID: 5568706249872898536}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -7696,7 +7697,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -7748,6 +7749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  died: 0
 --- !u!136 &4951922751590868134
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7762,6 +7764,25 @@ CapsuleCollider:
   m_Height: 1.431645
   m_Direction: 1
   m_Center: {x: 0.0007696301, y: 0.25757128, z: 0.015509754}
+--- !u!95 &5568706249872898536
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552531464185153265}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 55deafa361c76c641a6c718cfb49a7c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4552531464889956202
 GameObject:
   m_ObjectHideFlags: 0
@@ -9983,7 +10004,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

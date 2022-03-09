@@ -10,9 +10,11 @@ public class Ghost : MonoBehaviour
 {
 
     public float damage;
+    public bool died = false;
     private Transform playerInstance;
     private NavMeshAgent agent;
     private GameObject LampIcon;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +27,27 @@ public class Ghost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = playerInstance.position;
+        if(!died)
+            agent.destination = playerInstance.position;
+    }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        died = false;
+
     }
 
     public void Die()
     {
+        died = true;
+        agent.destination = transform.position;
+        //animator.SetBool("Dead", true);
+        animator.Play("GhostDeath");
         GameManager.playerInstance.RefillReload(5.0f);
         GameManager.instance.ultimateProgress += 10.0f;
         LampIcon.GetComponent<Image>().fillAmount = GameManager.instance.ultimateProgress/100;
-        Destroy(gameObject);
+        //Destroy(gameObject);  //Ghost gameobject removal is handled in animator script!!!
     }
 
     private void OnTriggerEnter(Collider other)
