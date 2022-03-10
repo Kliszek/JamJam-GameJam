@@ -32,5 +32,10 @@ public class Scene_Manager : MonoBehaviour
     SceneManager.LoadScene("Credits");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 
 }

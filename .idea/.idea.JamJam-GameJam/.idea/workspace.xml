@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d371ee3-845e-4f30-8e08-5fcbc0edada4" name="Changes" comment="" />
+    <list default="true" id="4d371ee3-845e-4f30-8e08-5fcbc0edada4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JamJam-GameJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JamJam-GameJam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Room.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Room.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StartScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scene_Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scene_Manager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UiManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UiManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +19,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Zabawa tekstem/Assets/Scrpts/Zarzadzanie_skrypty.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="264nQkpOgHLPkQLpKC8VpQujsg6" />
   <component name="ProjectViewState">
@@ -27,6 +40,8 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -60,6 +75,9 @@
       <option name="presentableId" value="Default" />
       <updated>1646691714997</updated>
       <workItem from="1646691738626" duration="1861000" />
+      <workItem from="1646905957299" duration="697000" />
+      <workItem from="1646914642695" duration="33000" />
+      <workItem from="1646914687998" duration="2608000" />
     </task>
     <servers />
   </component>
