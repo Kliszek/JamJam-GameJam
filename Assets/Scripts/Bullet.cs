@@ -24,7 +24,12 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        transform.localScale += Vector3.right * Time.deltaTime * wideningSpeed;
+
+        Vector3 wideningVector = Vector3.right * Time.deltaTime * wideningSpeed;
+        transform.localScale += wideningVector;
+        var shape = GetComponent<ParticleSystem>().shape;
+        shape.scale = transform.localScale;
+        //shape.scale = Vector3.zero;
 
         lifeTime += Time.deltaTime;
         if (lifeTime > maxLifeTime)

@@ -15,11 +15,12 @@ public class Player : MonoBehaviour
     public float health = 100.0f;
     public float maxHealth = 100.0f;
     public float NormalizedHealth => health / maxHealth;
-    [SerializeField] private GameObject BrainIcon;
+    GameObject BrainIcon;
 
     // Start is called before the first frame update
     void Start()
     {
+        BrainIcon = GameObject.Find("Brain_full");
         reloadCooldown = 0.0f;
     }
 

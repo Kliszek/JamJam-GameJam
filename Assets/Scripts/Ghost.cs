@@ -46,7 +46,8 @@ public class Ghost : MonoBehaviour
         animator.Play("GhostDeath");
         GameManager.playerInstance.RefillReload(5.0f);
         GameManager.instance.ultimateProgress += 10.0f;
-        LampIcon.GetComponent<Image>().fillAmount = GameManager.instance.ultimateProgress/100;
+
+        LampIcon.GetComponent<Image>().fillAmount = GameManager.instance.NormalizedUltimate;
         //Destroy(gameObject);  //Ghost gameobject removal is handled in animator script!!!
     }
 
