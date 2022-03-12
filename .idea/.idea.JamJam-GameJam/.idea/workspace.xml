@@ -13,6 +13,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Temp/Compiled-Standard (Specular setup).shader" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -69,6 +72,8 @@
       <workItem from="1646914642695" duration="33000" />
       <workItem from="1646914687998" duration="2608000" />
       <workItem from="1647035401751" duration="72000" />
+      <workItem from="1647081489563" duration="120000" />
+      <workItem from="1647083438764" duration="4076000" />
     </task>
     <servers />
   </component>

@@ -6,12 +6,13 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class UiManager : MonoBehaviour
 {
+    public static UiManager instance;
     [SerializeField] public GameObject fpsController;
     [SerializeField] private GameObject Screen;
     [SerializeField] private GameObject PauseMenu;
     bool IsNukeActive = true;
     [SerializeField] private GameObject GM;
-    private bool activeMenubool = false;
+    public bool activeMenubool = false;
 
     private GameObject UltimateProgressUI;
     // Start is called before the first frame update
@@ -94,11 +95,14 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    public void ResumeGame()
+    void ResumeGame()
     {
         UndoChanges();
         PauseMenu.SetActive(false);
-        activeMenubool = false;
+        activeMenubool = false;;
 
     }
+
+
+    
 }

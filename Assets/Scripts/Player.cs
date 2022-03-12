@@ -16,12 +16,16 @@ public class Player : MonoBehaviour
     public float maxHealth = 100.0f;
     public float NormalizedHealth => health / maxHealth;
     GameObject BrainIcon;
+    private GameObject FlashLight;
+    private GameObject UiManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        UiManager = GameObject.Find("UiManager");
         BrainIcon = GameObject.Find("Brain_full");
         reloadCooldown = 0.0f;
+        FlashLight = GameObject.Find("FlashLightParent");
     }
 
     // Update is called once per frame
@@ -61,10 +65,12 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        if (GameManager.instance.ultimateUsed == false)
+        if (GameManager.instance.ultimateUsed == false && UiManager.GetComponent<UiManager>().activeMenubool == false)
         {
             reloadCooldown = reloadTime;
             Instantiate(bulletPrefab, transform.position, transform.rotation);
+            FlashLight.GetComponent<Animator>().enabled = true;
+            FlashLight.GetComponent<AudioSource>().Play();
         }
     }
 
