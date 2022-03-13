@@ -148,6 +148,9 @@ public class UiManager : MonoBehaviour
         GameManager.instance.isGamePaused = false;
     }
 
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     
 }
