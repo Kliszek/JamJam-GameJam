@@ -24,6 +24,8 @@ public class UiManager : MonoBehaviour
         HealthBar = GameObject.Find("Brain_full").GetComponent<Image>();
         ReloadBar = GameObject.Find("ReloadIcon").GetComponent<Image>();
         PauseMenu.SetActive(false);
+
+        UpdateUltimateBar();        //sets the ultimate bar to zero at the start of the game
     }
 
     private void Awake()
