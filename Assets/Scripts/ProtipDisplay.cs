@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ProtipDisplay : MonoBehaviour
 {
-    private string[] protips = { "Try not to get shot next time", "If you dodge bullets fast enough, you won't get killed", "If you shoot an enemy, they immediately die", "Load your ultimate bar by shooting down enemies", "Make sure not to paste bullet movement into the player's script", "Pay attention to your mental health – stop playing when you're too tired" };
+    private string[] protips = { "Avoid bumping into ghosts at all costs", "Press SHIFT to run faster", "Every time you shoot down a ghost, your light bulb gains energy", "Don't let the ghosts surround you", "Ghosts are usually afraid of light", "Pay attention to your mental health – stop playing when you're tired" };
     Text protipText;
 
     void Start()
