@@ -73,28 +73,30 @@ public class UiManager : MonoBehaviour
         Cursor.visible = true ;        
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
+
+        if (GameManager.instance.spawnInterval > 1.0f)
+            GameManager.instance.spawnInterval -= 0.2f;
     }
     public void LevelUpSpeed()
     {
         GameManager.instance.playerSpeedLevel++;
-        if(GameManager.instance.spawnInterval > 1.0f)
-            GameManager.instance.spawnInterval -= 0.2f;
+        GameManager.playerInstance.GetComponent<FirstPersonController>().increaseSpeed();
         ResumeGame();
         //UltimateProgressClear();
     }
     public void LevelUpHealth()
     {
         GameManager.instance.playerHealthLevel++;
-        if (GameManager.instance.spawnInterval > 1.0f)
-            GameManager.instance.spawnInterval -= 0.2f;
+        GameManager.playerInstance.maxHealth += 10.0f;
+        GameManager.playerInstance.health = GameManager.playerInstance.maxHealth;
+        UpdateHealthBar();
         ResumeGame();
         //UltimateProgressClear();
     }
     public void LevelUpReload()
     {
         GameManager.instance.playerReloadLevel++;
-        if (GameManager.instance.spawnInterval > 1.0f)
-            GameManager.instance.spawnInterval -= 0.2f;
+        GameManager.playerInstance.reloadTime -= 0.5f;
         ResumeGame();
         //UltimateProgressClear();
     }
