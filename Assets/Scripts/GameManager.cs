@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public float NormalizedUltimate => ultimateProgress / ultimateBoundary;
     public bool CanUseUltimate => ultimateProgress >= ultimateBoundary;
     //public bool ultimateUsed = false;
+    public float spawnInterval = 2.0f;
+    public Transform[] spawnPoints;
+    private float spawnNoise = 0.0f;
 
     [Header("Player levels")]
     public int playerSpeedLevel = 1;
@@ -20,7 +23,6 @@ public class GameManager : MonoBehaviour
     public int playerReloadLevel = 1;
 
     public GameObject ghostPrefab;
-    public Transform spawnPoint;
     float enemyCooldown;
 
     public bool isGamePaused = false;
@@ -45,15 +47,20 @@ public class GameManager : MonoBehaviour
         ultimateProgress = 0.0f;
 
         isGamePaused = false;
+
+
     }
 
     private void Update()
     {
         enemyCooldown -= Time.deltaTime;
-        if (enemyCooldown <= 0.0f)
+        if (enemyCooldown <= spawnNoise)
         {
+            Transform spawnPoint = spawnPoints[Random.Range(0,spawnPoints.Length)];
             Instantiate(ghostPrefab, spawnPoint);
-            enemyCooldown = 3.0f;
+            enemyCooldown = spawnInterval;
+
+            spawnNoise = Random.Range(0, 5) * 0.1f;
         }
     }
 

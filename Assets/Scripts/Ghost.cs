@@ -11,6 +11,7 @@ public class Ghost : MonoBehaviour
 
     public float damage;
     public float reloadRefillAmount = 2.0f;
+    public float ultimateFillAmount = 7.0f;
     [HideInInspector]
     public bool died = false;
     private Transform playerInstance;
@@ -47,7 +48,7 @@ public class Ghost : MonoBehaviour
         animator.Play("GhostDeath");
         GameManager.playerInstance.RefillReload(reloadRefillAmount);
 
-        GameManager.instance.ChargeUltimate(10);
+        GameManager.instance.ChargeUltimate(ultimateFillAmount);
 
         LampIcon.GetComponent<Image>().fillAmount = GameManager.instance.NormalizedUltimate;
         //Destroy(gameObject);  //Ghost gameobject removal is handled in animator script!!!
@@ -61,15 +62,8 @@ public class Ghost : MonoBehaviour
             //GameManager.playerInstance.TakeDamage(damage);
 
             GameManager.playerInstance.TakeDamage(damage);
+            Die();
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("Player got hit!");
-            GameManager.playerInstance.TakeDamage(damage);
-        }
-    }
 }

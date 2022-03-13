@@ -73,18 +73,24 @@ public class UiManager : MonoBehaviour
     public void LevelUpSpeed()
     {
         GameManager.instance.playerSpeedLevel++;
+        if(GameManager.instance.spawnInterval > 1.0f)
+            GameManager.instance.spawnInterval -= 0.2f;
         ResumeGame();
         //UltimateProgressClear();
     }
     public void LevelUpHealth()
     {
         GameManager.instance.playerHealthLevel++;
+        if (GameManager.instance.spawnInterval > 1.0f)
+            GameManager.instance.spawnInterval -= 0.2f;
         ResumeGame();
         //UltimateProgressClear();
     }
     public void LevelUpReload()
     {
         GameManager.instance.playerReloadLevel++;
+        if (GameManager.instance.spawnInterval > 1.0f)
+            GameManager.instance.spawnInterval -= 0.2f;
         ResumeGame();
         //UltimateProgressClear();
     }
