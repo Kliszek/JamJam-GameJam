@@ -77,7 +77,8 @@ public class GameManager : MonoBehaviour
 
     public void OnDie()
     {
-        Time.timeScale = 0.0f;
         SceneManager.LoadScene(2);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
