@@ -10,60 +10,81 @@ public class UiManager : MonoBehaviour
     [SerializeField] public GameObject fpsController;
     [SerializeField] private GameObject Screen;
     [SerializeField] private GameObject PauseMenu;
-    bool IsNukeActive = true;
-    [SerializeField] private GameObject GM;
-    public bool activeMenubool = false;
+    //bool IsNukeActive = true;
+    //[SerializeField] private GameObject GM;
+    //public bool activeMenubool = false;
 
-    private GameObject UltimateProgressUI;
+    private Image UltimateBar;
+    private Image HealthBar;
+    private Image ReloadBar;
     // Start is called before the first frame update
     void Start()
     {
-        UltimateProgressUI = GameObject.Find("LightBulb");
+        UltimateBar = GameObject.Find("LightBulb").GetComponent<Image>();
+        HealthBar = GameObject.Find("Brain_full").GetComponent<Image>();
+        ReloadBar = GameObject.Find("ReloadIcon").GetComponent<Image>();
         PauseMenu.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+
+    public void UpdateUltimateBar()
+    {
+        UltimateBar.fillAmount = GameManager.instance.NormalizedUltimate;
+    }
+
+    public void UpdateHealthBar()
+    {
+        HealthBar.fillAmount = GameManager.playerInstance.NormalizedHealth;
+    }
+
+    public void UpdateReloadBar()
+    {
+        ReloadBar.fillAmount = GameManager.playerInstance.NormalizedReload;
     }
 
     // Update is called once per frame
     void Update()
     {
-        IsNukeActive = GM.GetComponent<GameManager>().ultimateUsed;
-        OpenLevelUp(IsNukeActive);
-        OpenPause(IsNukeActive);
-        
+        //IsNukeActive = GM.GetComponent<GameManager>().ultimateUsed;
+        //OpenLevelUp(IsNukeActive);
+        //OpenPause(IsNukeActive);
+        //      \(O_o)/
+
+        if(Input.GetButton("Cancel") && !GameManager.instance.isGamePaused)
+        {
+            OpenPause();
+        }
     }
-    private void OpenLevelUp(bool IsNukeActive)
+    public void OpenLevelUp()
     {
-        if (IsNukeActive == true)
-        {
-            Screen.SetActive(true);
-            fpsController.GetComponent<FirstPersonController>().enabled = false;
-            Cursor.visible = true ;        
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
-
-
-        }
-        else
-        {
-            Screen.SetActive(false);
-        }
+        Screen.SetActive(true);
+        fpsController.GetComponent<FirstPersonController>().enabled = false;
+        Cursor.visible = true ;        
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
     }
     public void LevelUpSpeed()
     {
-        GM.GetComponent<GameManager>().playerSpeedLevel++;
-        UndoChanges();
-        UltimateProgressClear();
+        GameManager.instance.playerSpeedLevel++;
+        ResumeGame();
+        //UltimateProgressClear();
     }
     public void LevelUpHealth()
     {
-        GM.GetComponent<GameManager>().playerHealthLevel++;
-        UndoChanges();
-        UltimateProgressClear();
+        GameManager.instance.playerHealthLevel++;
+        ResumeGame();
+        //UltimateProgressClear();
     }
     public void LevelUpReload()
     {
-        GM.GetComponent<GameManager>().playerReloadLevel++;
-        UndoChanges();
-        UltimateProgressClear();
+        GameManager.instance.playerReloadLevel++;
+        ResumeGame();
+        //UltimateProgressClear();
     }
 
     private void UndoChanges()
@@ -74,33 +95,33 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    private void UltimateProgressClear()
-    {
-        GM.GetComponent<GameManager>().ultimateUsed = false;
-        GM.GetComponent<GameManager>().ultimateProgress = 0;
-        UltimateProgressUI.GetComponent<Image>().fillAmount = 0;//is it necessary?
+    //private void UltimateProgressClear()
+    //{
+    //    GM.GetComponent<GameManager>().ultimateUsed = false;
+    //    GM.GetComponent<GameManager>().ultimateProgress = 0;
+    //    UltimateBar.GetComponent<Image>().fillAmount = 0;//is it necessary?
 
-    }
+    //}
 
-    private void OpenPause(bool activeMenubool)
+
+    public void OpenPause()
     {
-        if (Input.GetButton("Cancel") && activeMenubool == false)
-        {
-            activeMenubool = true;
-            PauseMenu.SetActive(true);
-            fpsController.GetComponent<FirstPersonController>().enabled = false;
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        //activeMenubool = true;    //?????
+        GameManager.instance.isGamePaused = true;
+        PauseMenu.SetActive(true);
+        fpsController.GetComponent<FirstPersonController>().enabled = false;
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void ResumeGame()
     {
         UndoChanges();
         PauseMenu.SetActive(false);
-        activeMenubool = false;;
-
+        Screen.SetActive(false);
+        //activeMenubool = false;;
+        GameManager.instance.isGamePaused = false;
     }
 
 
