@@ -49,7 +49,7 @@ public class Ghost : MonoBehaviour
         GetComponent<Rigidbody>().AddExplosionForce(1500.0f, GameManager.playerInstance.transform.position, 100.0f);
         animator.Play("GhostDeath");
     }
-    public void Die()
+    public void Die(bool playerDamaged = false)
     {
         died = true;
         agent.destination = transform.position;
@@ -57,9 +57,11 @@ public class Ghost : MonoBehaviour
         animator.Play("GhostDeath");
         GameManager.playerInstance.RefillReload(reloadRefillAmount);
 
-        GameManager.instance.ChargeUltimate(ultimateFillAmount);
+        if(!playerDamaged)
+            GameManager.instance.ChargeUltimate(ultimateFillAmount);
 
-        LampIcon.GetComponent<Image>().fillAmount = GameManager.instance.NormalizedUltimate;
+        UiManager.instance.UpdateUltimateBar();
+        //LampIcon.GetComponent<Image>().fillAmount = GameManager.instance.NormalizedUltimate;
         //Destroy(gameObject);  //Ghost gameobject removal is handled in animator script!!!
     }
 
@@ -71,7 +73,8 @@ public class Ghost : MonoBehaviour
             //GameManager.playerInstance.TakeDamage(damage);
 
             GameManager.playerInstance.TakeDamage(damage);
-            Die();
+            GameManager.instance.AddPoints(-5);
+            Die(true);
         }
     }
 

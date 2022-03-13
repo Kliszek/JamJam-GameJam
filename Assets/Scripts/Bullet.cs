@@ -39,6 +39,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
+        {
             other.GetComponent<Ghost>().Die();
+            GameManager.instance.AddPoints(10);
+        }
     }
 }

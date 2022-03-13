@@ -17,12 +17,14 @@ public class UiManager : MonoBehaviour
     private Image UltimateBar;
     private Image HealthBar;
     private Image ReloadBar;
+    private Text Score;
     // Start is called before the first frame update
     void Start()
     {
         UltimateBar = GameObject.Find("LightBulb").GetComponent<Image>();
         HealthBar = GameObject.Find("Brain_full").GetComponent<Image>();
         ReloadBar = GameObject.Find("ReloadIcon").GetComponent<Image>();
+        Score = GameObject.Find("ScoreText").GetComponent<Text>();
         PauseMenu.SetActive(false);
 
         UpdateUltimateBar();        //sets the ultimate bar to zero at the start of the game
@@ -41,6 +43,11 @@ public class UiManager : MonoBehaviour
             UltimateBar.color = Color.green;
         else
             UltimateBar.color = Color.white;
+    }
+
+    public void UpdateScoreUI()
+    {
+        Score.text = $"Score:\n{GameManager.instance.playerScore}";
     }
 
     public void UpdateHealthBar()
@@ -76,6 +83,8 @@ public class UiManager : MonoBehaviour
 
         if (GameManager.instance.spawnInterval > 1.0f)
             GameManager.instance.spawnInterval -= 0.2f;
+        
+        GameManager.instance.ultimateBoundary += 10.0f;
     }
     public void LevelUpSpeed()
     {
@@ -88,7 +97,8 @@ public class UiManager : MonoBehaviour
     {
         GameManager.instance.playerHealthLevel++;
         GameManager.playerInstance.maxHealth += 10.0f;
-        GameManager.playerInstance.health = GameManager.playerInstance.maxHealth;
+        GameManager.playerInstance.health = Mathf.Clamp(GameManager.playerInstance.health+20, 0, GameManager.playerInstance.maxHealth);
+
         UpdateHealthBar();
         ResumeGame();
         //UltimateProgressClear();

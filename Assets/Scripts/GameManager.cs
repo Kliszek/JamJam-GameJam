@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -86,9 +87,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void AddPoints(int points)
+    public void AddPoints(int points)
     {
         playerScore += points;
+        UiManager.instance.UpdateScoreUI();
     }
 
     public void ChargeUltimate(float value)
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour
         ultimateProgress = 0;
         ultimateUsed = true;
         waitTime = 0.0f;
+        AddPoints(50);
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
@@ -118,6 +121,7 @@ public class GameManager : MonoBehaviour
 
     public void OnDie()
     {
+        GameObject.Find("ScoreHolder").GetComponent<ScoreHolder>().playerScore = playerScore;
         SceneManager.LoadScene(2);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
