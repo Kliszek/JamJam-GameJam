@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1299212451859314226}
   - component: {fileID: 4951922751590868134}
   - component: {fileID: 5568706249872898536}
+  - component: {fileID: 8532647056768177023}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -7748,7 +7749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4159a72205aeaa248923f1135ac36601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
+  reloadRefillAmount: 2
+  ultimateFillAmount: 7
   died: 0
 --- !u!136 &4951922751590868134
 CapsuleCollider:
@@ -7783,6 +7786,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &8532647056768177023
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552531464185153265}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4552531464889956202
 GameObject:
   m_ObjectHideFlags: 0

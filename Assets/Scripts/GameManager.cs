@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     public float ultimateBoundary = 100.0f;
     public float NormalizedUltimate => ultimateProgress / ultimateBoundary;
     public bool CanUseUltimate => ultimateProgress >= ultimateBoundary;
-    //public bool ultimateUsed = false;
+    public bool ultimateUsed = false;
+    private GameObject ultimateGameObject;
+
     public float spawnInterval = 2.0f;
     public Transform[] spawnPoints;
     private float spawnNoise = 0.0f;
@@ -21,6 +23,10 @@ public class GameManager : MonoBehaviour
     public int playerSpeedLevel = 1;
     public int playerHealthLevel = 1;
     public int playerReloadLevel = 1;
+
+    [Space(10)]
+    public float waitAfterUltimate = 1.0f;
+    float waitTime;
 
     public GameObject ghostPrefab;
     float enemyCooldown;
@@ -37,6 +43,9 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        ultimateGameObject = GameObject.Find("Ultimate");
+        ultimateGameObject.SetActive(false);
+
         enemyCooldown = 5.0f;
         if (playerInstance == null)
             playerInstance = FindObjectOfType<Player>();
@@ -54,13 +63,26 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         enemyCooldown -= Time.deltaTime;
-        if (enemyCooldown <= spawnNoise)
+        if (enemyCooldown <= spawnNoise && !ultimateUsed)
         {
             Transform spawnPoint = spawnPoints[Random.Range(0,spawnPoints.Length)];
             Instantiate(ghostPrefab, spawnPoint);
             enemyCooldown = spawnInterval;
 
             spawnNoise = Random.Range(0, 5) * 0.1f;
+        }
+
+        if(ultimateUsed)
+        {
+            waitTime += Time.deltaTime;
+            if(waitTime >= waitAfterUltimate)
+            {
+                ultimateUsed = false;
+                ultimateGameObject.SetActive(false);
+                ultimateProgress = 0.0f;
+                UiManager.instance.UpdateUltimateBar();
+                UiManager.instance.OpenLevelUp();
+            }
         }
     }
 
@@ -75,15 +97,22 @@ public class GameManager : MonoBehaviour
         UiManager.instance.UpdateUltimateBar();
         if(CanUseUltimate)
         {
-            //some code
+            //UiManager.instance.UpdateUltimateBar();
         }
     }
 
     public void UseUltimate()
     {
+        ultimateGameObject.SetActive(true);
         ultimateProgress = 0;
-        UiManager.instance.UpdateUltimateBar();
-        UiManager.instance.OpenLevelUp();
+        ultimateUsed = true;
+        waitTime = 0.0f;
+
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemy.GetComponent<Ghost>().Explode();
+        }
+
         //some code
     }
 

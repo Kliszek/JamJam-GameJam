@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Ghost : MonoBehaviour
 {
 
-    public float damage;
+    public float damage = 10.0f;
     public float reloadRefillAmount = 2.0f;
     public float ultimateFillAmount = 7.0f;
     [HideInInspector]
@@ -40,6 +40,15 @@ public class Ghost : MonoBehaviour
         died = false;
     }
 
+    public void Explode()
+    {
+        died = true;
+        agent.destination = transform.position;
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().AddExplosionForce(1500.0f, GameManager.playerInstance.transform.position, 100.0f);
+        animator.Play("GhostDeath");
+    }
     public void Die()
     {
         died = true;

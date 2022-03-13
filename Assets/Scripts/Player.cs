@@ -56,10 +56,6 @@ public class Player : MonoBehaviour
     public void Ultimate()
     {
         GameManager.instance.UseUltimate();
-        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            enemy.GetComponent<Ghost>().Die();
-        }
     }
 
     public void RefillReload(float value)

@@ -37,6 +37,10 @@ public class UiManager : MonoBehaviour
     public void UpdateUltimateBar()
     {
         UltimateBar.fillAmount = GameManager.instance.NormalizedUltimate;
+        if (GameManager.instance.CanUseUltimate)
+            UltimateBar.color = Color.green;
+        else
+            UltimateBar.color = Color.white;
     }
 
     public void UpdateHealthBar()
