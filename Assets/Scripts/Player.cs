@@ -17,12 +17,12 @@ public class Player : MonoBehaviour
     public float NormalizedHealth => health / maxHealth;
     GameObject BrainIcon;
     private GameObject FlashLight;
-    private GameObject UiManager;
+    //private GameObject UiManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        UiManager = GameObject.Find("UiManager");
+        //UiManager = GameObject.Find("UiManager");
         BrainIcon = GameObject.Find("Brain_full");
         reloadCooldown = 0.0f;
         FlashLight = GameObject.Find("FlashLightParent");
@@ -31,11 +31,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.isGamePaused)
+            return;
+
         if(reloadCooldown > 0.0f)
         {
             reloadCooldown -= Time.deltaTime;
             if (reloadCooldown < 0.0f)
                 reloadCooldown = 0.0f;
+            UiManager.instance.UpdateReloadBar();
         }
 
         if(Input.GetKeyDown(KeyCode.Mouse0) && reloadCooldown <= 0.0f)
@@ -61,17 +65,15 @@ public class Player : MonoBehaviour
     public void RefillReload(float value)
     {
         reloadCooldown -= value;
+        UiManager.instance.UpdateReloadBar();
     }
 
     void Shoot()
     {
-        if (GameManager.instance.ultimateUsed == false && UiManager.GetComponent<UiManager>().activeMenubool == false)
-        {
-            reloadCooldown = reloadTime;
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
-            FlashLight.GetComponent<Animator>().enabled = true;
-            FlashLight.GetComponent<AudioSource>().Play();
-        }
+        reloadCooldown = reloadTime;
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        FlashLight.GetComponent<Animator>().enabled = true;
+        FlashLight.GetComponent<AudioSource>().Play();
     }
 
     public void TakeDamage(float value)
@@ -82,5 +84,6 @@ public class Player : MonoBehaviour
         if (health <= 0.0f)
             GameManager.instance.OnDie();
         Debug.Log("AU");
+        UiManager.instance.UpdateHealthBar();
     }
 }
