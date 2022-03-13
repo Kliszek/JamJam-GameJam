@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public float ultimateBoundary = 100.0f;
     public float NormalizedUltimate => ultimateProgress / ultimateBoundary;
     public bool CanUseUltimate => ultimateProgress >= ultimateBoundary;
-    public bool ultimateUsed = false;
+    //public bool ultimateUsed = false;
 
     [Header("Player levels")]
     public int playerSpeedLevel = 1;
@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public GameObject ghostPrefab;
     public Transform spawnPoint;
     float enemyCooldown;
+
+    public bool isGamePaused = false;
 
     private void Awake()
     {
@@ -41,7 +43,8 @@ public class GameManager : MonoBehaviour
 
         playerScore = 0;
         ultimateProgress = 0.0f;
-        ultimateUsed = false;
+
+        isGamePaused = false;
     }
 
     private void Update()
@@ -59,9 +62,10 @@ public class GameManager : MonoBehaviour
         playerScore += points;
     }
 
-    void ChargeUltimate(float value)
+    public void ChargeUltimate(float value)
     {
         ultimateProgress += value;
+        UiManager.instance.UpdateUltimateBar();
         if(CanUseUltimate)
         {
             //some code
@@ -70,14 +74,16 @@ public class GameManager : MonoBehaviour
 
     public void UseUltimate()
     {
-        ultimateUsed = true;
-
+        ultimateProgress = 0;
+        UiManager.instance.UpdateUltimateBar();
+        UiManager.instance.OpenLevelUp();
         //some code
     }
 
     public void OnDie()
     {
-        Time.timeScale = 0.0f;
         SceneManager.LoadScene(2);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

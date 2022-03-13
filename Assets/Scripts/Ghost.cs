@@ -10,6 +10,8 @@ public class Ghost : MonoBehaviour
 {
 
     public float damage;
+    public float reloadRefillAmount = 2.0f;
+    [HideInInspector]
     public bool died = false;
     private Transform playerInstance;
     private NavMeshAgent agent;
@@ -35,7 +37,6 @@ public class Ghost : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         died = false;
-
     }
 
     public void Die()
@@ -44,8 +45,9 @@ public class Ghost : MonoBehaviour
         agent.destination = transform.position;
         //animator.SetBool("Dead", true);
         animator.Play("GhostDeath");
-        GameManager.playerInstance.RefillReload(5.0f);
-        GameManager.instance.ultimateProgress += 10.0f;
+        GameManager.playerInstance.RefillReload(reloadRefillAmount);
+
+        GameManager.instance.ChargeUltimate(10);
 
         LampIcon.GetComponent<Image>().fillAmount = GameManager.instance.NormalizedUltimate;
         //Destroy(gameObject);  //Ghost gameobject removal is handled in animator script!!!
@@ -53,7 +55,7 @@ public class Ghost : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(!died && other.tag == "Player")
         {
             Debug.Log("Player got hit!");
             //GameManager.playerInstance.TakeDamage(damage);
